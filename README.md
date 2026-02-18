@@ -160,4 +160,8 @@ Please open an issue or submit a pull request.
 
 The GUIDO Scale aims to become a reference framework for organizations navigating the transition toward **AI-native software engineering** and **Specification-Driven Development**.
 
+## License
 
+This project is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+© 2026 Guido Miranda Mercado
