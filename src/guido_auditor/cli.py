@@ -10,12 +10,12 @@ SKIP = {".git", "node_modules", ".venv", "venv", "dist", "build", "coverage", ".
 
 CHECKS = (
     ("documentation", "project_readme", "Project README", lambda p: p.name.lower() == "readme.md" and p.parent == Path(".")),
-    ("documentation", "specifications", "Versioned specifications", lambda p: any(x in p.parts for x in ("specs", ".spectra", "specifications")) and p.suffix.lower() in (".md", ".yaml", ".yml", ".json")),
+    ("documentation", "specifications", "Versioned specifications", lambda p: any(x.lower() in ("spec", "specs", ".spectra", "specifications") for x in p.parts[:-1]) and p.suffix.lower() in (".md", ".yaml", ".yml", ".json")),
     ("governance", "contribution_policy", "Contribution guidance", lambda p: p.name.lower() in ("contributing.md", "code_of_conduct.md")),
     ("governance", "security_policy", "Security policy", lambda p: p.name.lower() == "security.md"),
     ("automation", "ci_workflow", "CI workflow", lambda p: len(p.parts) >= 3 and p.parts[:2] == (".github", "workflows") and p.suffix.lower() in (".yaml", ".yml")),
-    ("quality", "tests", "Versioned tests", lambda p: ("tests" in p.parts or "test" in p.parts or p.name.startswith("test_")) and p.suffix.lower() in (".py", ".js", ".ts", ".cs", ".mjs")),
-    ("agents", "agent_contract", "Agent instructions or contract", lambda p: p.name.lower() in ("agents.md", "agent.yaml", "agent.yml") or ("agents" in p.parts and p.suffix.lower() in (".md", ".yaml", ".yml"))),
+    ("quality", "tests", "Versioned tests", lambda p: (p.name.lower().startswith("test_") and p.suffix.lower() == ".py") or p.name.lower().endswith((".test.js", ".test.ts", ".test.mjs", ".spec.js", ".spec.ts", ".spec.mjs", "tests.cs", "test.cs"))),
+    ("agents", "agent_contract", "Agent instructions or contract", lambda p: (p.parent == Path(".") and p.name.lower() == "agents.md") or (p.name.lower() in ("agent.yaml", "agent.yml") and "agents" in p.parts) or ("agents" in p.parts[:-1] and p.suffix.lower() in (".md", ".yaml", ".yml")) or (p.name.lower() in ("agentes.md", "agents.md") and "dev" in p.parts[:-1])),
     ("traceability", "trace_map", "Explicit trace mapping", lambda p: "trace" in p.name.lower() and p.suffix.lower() in (".json", ".yaml", ".yml", ".md")),
 )
 
