@@ -19,10 +19,12 @@ directory must be outside the audited repository.
 
 ## Evidence contract
 
-Eight checks inventory the README, versioned specifications, contribution and
+Eight checks inventory the README, versioned specifications (including `Spec/`,
+`spec/` and `specs/`), contribution and
 security policies, CI workflows, test files, agent contracts and explicit trace
 files. The JSON contains the check id, status, path examples and total matched
-paths. `observed` means a matching file exists. `no_evidence` means only that
+paths. A gameplay `design/agents.md` file alone is not treated as a development
+agent contract; a `dev/agentes.md` role document is. `observed` means a matching file exists. `no_evidence` means only that
 this scan did not find one. These eight checks are an inventory, not the five
 category scores in `assessment/guido-scorecard.md`.
 
