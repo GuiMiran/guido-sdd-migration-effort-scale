@@ -1,5 +1,18 @@
 # guido-sdd-migration-effort-scale
 
+## Run the first agent
+
+The `sdd-auditor` inventories repository evidence without changing the target:
+
+```bash
+python -m pip install -e .
+guido audit /path/to/repository --output-dir /tmp/guido-audit
+```
+
+It writes `audit.json` and `audit.md`. This inventory does not assign an
+organizational GUIDO level. See [the agent guide](docs/sdd-auditor.md) and
+[its contract](agents/sdd-auditor/agent.yaml).
+
 # GUIDO Scale  
 ## A Maturity and Migration Effort Model for Specification-Driven Development (SDD)
 
