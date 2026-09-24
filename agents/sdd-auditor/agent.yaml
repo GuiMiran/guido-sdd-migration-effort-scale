@@ -1,0 +1,20 @@
+name: sdd-auditor
+version: 0.1.0
+purpose: Collect auditable repository evidence for a GUIDO Scale assessment.
+inputs:
+  - local_repository_path
+tools:
+  - local_filesystem_read
+  - git_read_head
+outputs:
+  - audit.json
+  - audit.md
+permissions:
+  repository_write: false
+  network: false
+  pull_request_write: false
+  output_directory: user_selected_outside_repository
+limits:
+  - File presence does not establish artifact quality or process adoption.
+  - Do not assign an organizational GUIDO level or migration effort.
+  - Missing repository evidence is not proof that a practice is absent.
