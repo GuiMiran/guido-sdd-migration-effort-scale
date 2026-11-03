@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "kind": "GUIDOReconstructionInputFreeze",
+  "status": "INPUTS_FROZEN_ORACLE_PENDING",
+  "repository": "GuiMiran/GastroFlow",
+  "revision": "b7614c145280ed1d7279a274cc0f94066eac8e65",
+  "scope": "Table-service checkout AC-001 and AC-002",
+  "files": [
+    {
+      "path": ".spectra/00-vision.md",
+      "gitBlobSha": "d56500def2c5b522b29778249821044aa2c6baf7"
+    },
+    {
+      "path": ".spectra/01-glossary.md",
+      "gitBlobSha": "cd3ae1c905a6f7d11324b06811a0031075c40b44"
+    },
+    {
+      "path": ".spectra/02-stories.md",
+      "gitBlobSha": "9441b3f2a194277ffa464389d2789fdd04073d30"
+    },
+    {
+      "path": ".spectra/03-business-rules.md",
+      "gitBlobSha": "96bb17552312fccab324ae6e56094a76c20d4e17"
+    },
+    {
+      "path": ".spectra/04-invariants.md",
+      "gitBlobSha": "ca8d9f45bf773715241350b45fb8dc56f62fe481"
+    },
+    {
+      "path": ".spectra/05-contracts.md",
+      "gitBlobSha": "666862027775d6a79cc238f49d1b5812fde20983"
+    },
+    {
+      "path": ".spectra/06-policies.md",
+      "gitBlobSha": "26c2e0017307a9595cb1d334e87a5c280c70227f"
+    },
+    {
+      "path": ".spectra/07-events.md",
+      "gitBlobSha": "c2c1c417e2c4f4af3268c0b31ac3a15e1cd8d933"
+    },
+    {
+      "path": ".spectra/11-acceptance-criteria.md",
+      "gitBlobSha": "037593e47381656a9c0e7220806f8aac6b21025d"
+    }
+  ],
+  "obligations": [
+    "AC-001",
+    "AC-002"
+  ],
+  "oracle": null,
+  "executionAuthorized": false
+}
