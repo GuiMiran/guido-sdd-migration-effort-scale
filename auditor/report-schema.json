@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rubric", "scope", "revision", "dimensions", "obligations", "findings", "migration", "executionAuthorized"],
+  "properties": {
+    "rubric": {"const": "guido-scale-v0.1"},
+    "scope": {"$ref": "#/$defs/text"},
+    "revision": {"pattern": "^[a-f0-9]{40}$", "type": "string"},
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["specCoverage", "specQuality", "traceability", "invariantCoverage", "domainExtraction", "reconstructability"],
+      "properties": {
+        "specCoverage": {"$ref": "#/$defs/rating"},
+        "specQuality": {"$ref": "#/$defs/rating"},
+        "traceability": {"$ref": "#/$defs/rating"},
+        "invariantCoverage": {"$ref": "#/$defs/rating"},
+        "domainExtraction": {"$ref": "#/$defs/rating"},
+        "reconstructability": {
+          "allOf": [
+            {"$ref": "#/$defs/rating"},
+            {"if": {"properties": {"status": {"const": "OBSERVED"}}},
+             "then": {"properties": {"evidence": {"minItems": 2}}}}
+          ]
+        }
+      },
+      "patternProperties": {
+        "^(specCoverage|specQuality|traceability|invariantCoverage|domainExtraction)$": {
+          "properties": {"status": {"enum": ["OBSERVED", "NOT_ASSESSED"]}}
+        }
+      }
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "basis", "mandatory", "outcome", "evidence"],
+        "properties": {
+          "id": {"$ref": "#/$defs/text"},
+          "basis": {"enum": ["EXISTING_IMPLEMENTATION", "RECONSTRUCTION"]},
+          "mandatory": {"type": "boolean"},
+          "outcome": {"enum": ["DEMONSTRATED", "FAILED", "NOT_EVALUATED"]},
+          "evidence": {"type": "array", "items": {"$ref": "#/$defs/text"}}
+        },
+        "if": {"properties": {"outcome": {"enum": ["DEMONSTRATED", "FAILED"]}}},
+        "then": {"properties": {"evidence": {"minItems": 1}}}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["observation", "nextAction", "closureCheck"],
+        "properties": {
+          "observation": {"$ref": "#/$defs/text"},
+          "nextAction": {"$ref": "#/$defs/text"},
+          "closureCheck": {"$ref": "#/$defs/text"}
+        }
+      }
+    },
+    "migration": {
+      "oneOf": [
+        {"const": "NOT_ESTIMATED"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["target", "work", "dependencies", "confidence"],
+          "properties": {
+            "target": {"$ref": "#/$defs/text"},
+            "work": {"$ref": "#/$defs/text"},
+            "dependencies": {"$ref": "#/$defs/text"},
+            "confidence": {"enum": ["LOW", "MEDIUM", "HIGH"]}
+          }
+        }
+      ]
+    },
+    "executionAuthorized": {"const": false}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "rating": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence", "rationale"],
+      "properties": {
+        "status": {"enum": ["OBSERVED", "NOT_ASSESSED", "NOT_TESTED"]},
+        "evidence": {"type": "array", "items": {"$ref": "#/$defs/text"}, "uniqueItems": true},
+        "rationale": {"$ref": "#/$defs/text"}
+      },
+      "if": {"properties": {"status": {"const": "OBSERVED"}}},
+      "then": {"properties": {"evidence": {"minItems": 1}}}
+    }
+  }
+}

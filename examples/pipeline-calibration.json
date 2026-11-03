@@ -1,0 +1,50 @@
+{
+  "rubric": "guido-scale-v0.1",
+  "scope": "Agentic Pipeline: 28 mapped acceptance tests in the authenticated A1 handoff; illustrative reviewer calibration, not a repository-wide score",
+  "revision": "140ab4202f6ffdc361904b0cf4a07027fa718640",
+  "dimensions": {
+    "specCoverage": {
+      "status": "NOT_ASSESSED",
+      "evidence": [],
+      "rationale": "The scoped expected test count is not a repository functionality inventory."
+    },
+    "specQuality": {
+      "status": "NOT_ASSESSED",
+      "evidence": [],
+      "rationale": "No independent review of specification clauses for this report."
+    },
+    "traceability": {
+      "status": "OBSERVED",
+      "evidence": [
+        "https://github.com/GuiMiran/guido-agentic-pipeline/actions/runs/41703130526",
+        "https://github.com/GuiMiran/guido-agentic-pipeline/actions/runs/41702938779"
+      ],
+      "rationale": "28/28 mapped tests passed at the audited commit. A complete independently checked spec-to-change chain was not evaluated."
+    },
+    "invariantCoverage": {
+      "status": "NOT_ASSESSED",
+      "evidence": [],
+      "rationale": "No separately reviewed invariant inventory and independent challenge suite."
+    },
+    "domainExtraction": {
+      "status": "NOT_ASSESSED",
+      "evidence": [],
+      "rationale": "No sampled blind review of domain decisions and exceptions."
+    },
+    "reconstructability": {
+      "status": "NOT_TESTED",
+      "evidence": [],
+      "rationale": "The A1 handoff audited and verified recorded tests; it did not reconstruct the implementation."
+    }
+  },
+  "findings": [
+    {
+      "observation": "A1 proves scoped test traceability, not completeness of the functionality inventory.",
+      "nextAction": "Choose one flow and version its mandatory behavior inventory.",
+      "closureCheck": "An independent reviewer checks that each mandatory obligation is uniquely identified and linked to its specification."
+    }
+  ],
+  "migration": "NOT_ESTIMATED",
+  "executionAuthorized": false,
+  "obligations": []
+}
