@@ -33,7 +33,23 @@ null. A human assessor must evaluate substance, use, process and culture.
 
 ## Next steps
 
+Use [Evaluating an SDD repository](evaluating-sdd-repositories.md) for the
+format-agnostic review procedure after collecting the inventory.
+
 1. Review the first report and tune the evidence checks using real repositories.
 2. Add qualitative assessment with cited excerpts and a review step.
-3. Run the CLI in CI and publish the JSON and Markdown as job artifacts.
+3. Run the CLI against a named target in CI and publish its JSON and Markdown as
+   job artifacts. This remains distinct from verifying the auditor repository.
 4. Only then consider a PR comment or a guided organizational scorecard.
+
+## Repository verification
+
+The proposed [GUIDO Verify workflow](ci-verification.md) tests this auditor and
+its repository verifier on PRs and main. It strictly parses JSON, validates
+diagnostic examples against the report schema and checks internal Markdown
+file destinations. It does not run an organizational assessment, authenticate
+remote evidence or publish an audit of another repository.
+
+Run locally using the commands in that guide. Its stable job name is
+`GUIDO verification`; a repository administrator must separately make that
+check required for main. No enforced branch protection is claimed here.

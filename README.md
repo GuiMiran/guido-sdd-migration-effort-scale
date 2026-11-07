@@ -1,13 +1,72 @@
-# guido-sdd-migration-effort-scale
+# GUIDO Scale
 
-## Current evaluation tracks
+> From repository evidence to reviewable decisions — without turning file
+> presence into a maturity score.
 
-- [Repository diagnostics v0.1](SCALE.md): proposed six-dimension calibration,
-  without a global score or automatic attestation.
-- [Calibration protocol](docs/calibration-v0.1.md): evidence anchors, unknowns,
-  independent review and decisions still awaiting owner approval.
-- The organizational model below and its assessment tools remain separate.
-  Their differing aggregation rules have not been reconciled by this proposal.
+## Start here: three questions, three instruments
+
+| Your question | Use | What you receive |
+| --- | --- | --- |
+| What evidence exists in this repo? | Executable `guido audit` | Eight file-presence checks; JSON and Markdown inventory |
+| What can this evidence actually demonstrate? | Proposed [six-dimension diagnostics](SCALE.md) | Scoped observations, unknowns and actionable gaps; human review |
+| How ready is our organization for SDD? | Organizational assessment below | Human organizational assessment; aggregation policy still needs reconciliation |
+
+These instruments are not interchangeable. A repo with specs and green CI does
+not automatically earn G4 or G5. The diagnostic proposal is format-agnostic:
+SPECTRA, OpenSpec, BDD and API contracts can all supply relevant evidence.
+
+## The evaluation journey
+
+```mermaid
+flowchart TD
+    Scope["Freeze behavior scope and source revision"] --> Audit["Collect file-presence inventory"]
+    Audit --> Review["Review clauses, obligations and execution evidence"]
+    Review --> Choice{"Valid isolated reconstruction trial?"}
+    Choice -->|Yes| Trial["Record independent behavioral outcomes"]
+    Choice -->|No| Unknown["Record reconstructability as NOT_TESTED"]
+    Trial --> Report["Compare reviewer reports and propose one closure check"]
+    Unknown --> Report
+```
+
+Inventory collection is automated. Substantive review, reconciliation and
+reconstruction are not automatically performed by this CLI.
+Follow the [repository evaluation guide](docs/evaluating-sdd-repositories.md)
+and [calibration protocol](docs/calibration-v0.1.md).
+
+### Read the evidence, not just the badge
+
+| Evidence you have | Claim it supports | Claim it does not support |
+| --- | --- | --- |
+| A specification file exists | The scanner found a candidate artifact | The requirements are complete or correct |
+| A reviewed trace annotation | A declared relationship exists | The implementation satisfies the rule |
+| An authenticated passing test receipt | The named check passed in that run | Every behavior or environment is covered |
+| A known seeded fault is caught | That control distinguishes that fault | General agent reliability or production readiness |
+| No valid reconstruction trial | Reconstruction has not been evaluated | Reconstruction failed |
+
+## Verify GUIDO itself
+
+This is different from assessing a target repository. The proposed
+`GUIDO Verify` workflow checks this project's code and documentation on PRs
+and main, with one stable job name: `GUIDO verification`.
+
+| Automated check | Boundary |
+| --- | --- |
+| Auditor and verifier unit tests | Tests the tooling, not an organization's maturity |
+| Strict JSON and diagnostic-schema checks | Checks structure, not evidence authenticity |
+| Internal Markdown file targets | No web URL, anchor or rendered-diagram verification |
+
+```sh
+python -m pip install -r requirements-ci.txt
+PYTHONPATH=src python -m unittest discover -s tests -v
+python scripts/verify_repository.py
+```
+
+Making the check **required for merge** is a separate administrator setting;
+the workflow does not enforce branch protection by itself.
+See [CI setup](docs/ci-verification.md) and [change history](CHANGELOG.md).
+
+The organizational model below remains separate from the diagnostic proposal.
+Its differing aggregation rules have not been reconciled by this change.
 
 ## Run the first agent
 
