@@ -1,5 +1,9 @@
 # GUIDO Scale
 
+[Agent entry](AGENTS.md) · [Shared GUIDO SDD governance hub](https://github.com/GuiMiran/spectra/tree/main/docs/ecosystem).
+Component versions and cross-repository decisions are coordinated there;
+assessment methodology remains owned here.
+
 > From repository evidence to reviewable decisions — without turning file
 > presence into a maturity score.
 

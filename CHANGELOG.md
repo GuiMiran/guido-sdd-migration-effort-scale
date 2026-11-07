@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add root AGENTS entry and bidirectional navigation to SPECTRA's shared
+  governance hub; keep assessment ownership and execution boundaries local.
+
 ### Added
 
 - Proposed `GUIDO Verify` GitHub Actions workflow for PRs targeting main, pushes
