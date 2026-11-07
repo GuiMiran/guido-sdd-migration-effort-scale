@@ -8,6 +8,10 @@ entire repository by implication. Publish six diagnostic observations, an option
 reconstruction attestation, and a separate migration estimate to a named target.
 No weights, overall grade, automatic attestation or write authority in v0.1.
 
+Use the proposed [calibration protocol](docs/calibration-v0.1.md) for evidence
+anchors and independent reviewer comparison. It does not resolve or replace
+the legacy organizational scoring policies.
+
 ## Diagnostic dimensions
 
 Use OBSERVED for a supported observation (including weaknesses), NOT_ASSESSED
