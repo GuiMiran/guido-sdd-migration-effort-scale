@@ -1,5 +1,14 @@
 # guido-sdd-migration-effort-scale
 
+## Current evaluation tracks
+
+- [Repository diagnostics v0.1](SCALE.md): proposed six-dimension calibration,
+  without a global score or automatic attestation.
+- [Calibration protocol](docs/calibration-v0.1.md): evidence anchors, unknowns,
+  independent review and decisions still awaiting owner approval.
+- The organizational model below and its assessment tools remain separate.
+  Their differing aggregation rules have not been reconciled by this proposal.
+
 ## Run the first agent
 
 The `sdd-auditor` inventories repository evidence without changing the target:
